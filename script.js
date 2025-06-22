@@ -1,6 +1,11 @@
 let userScore = 0
 let computerScore = 0
-let userAnswer = ""
+
+/**
+ * Retourne le choix du computer
+ * 
+ * @returns {String}
+ */
 function getComputerChoice() {
     const randomNumber = Math.random()
     if (randomNumber < 1 / 3) {
@@ -14,47 +19,71 @@ function getComputerChoice() {
     }
 }
 
+/**
+ * Retourne le choix du joueur
+ * 
+ * @returns {String}
+ */
 function getUserChoice() {
-    userAnswer = prompt('Rock, Paper, Scissors ?')
-    return userAnswer
+    return prompt('Rock, Paper, Scissors ?')
 }
+
+/**
+ * Joue un simple round
+ * 
+ * @param {String} userChoice 
+ * @param {String} computerChoice 
+ */
 function playRound(userChoice, computerChoice) {
     userChoice = userChoice.toLowerCase()
     computerChoice = computerChoice.toLowerCase()
+
     if (userChoice === 'rock' && computerChoice === 'scissors') {
         console.log("You win! Rock beats Scissors");
-        userScore++
+        ++userScore
+        console.log("user score: " + userScore, "computer score: " + computerScore);
     }
     if (userChoice === 'rock' && computerChoice === 'paper') {
         console.log("You lose! Paper beats Rock");
-        computerScore++
+        ++computerScore
+        console.log("user score: " + userScore, "computer score: " + computerScore);
     }
     if (userChoice === 'paper' && computerChoice === 'rock') {
         console.log("You win! Paper beats Rock");
-        userScore++
+        ++userScore
+        console.log("user score: " + userScore, "computer score: " + computerScore);
     }
     if (userChoice === 'paper' && computerChoice === 'scissors') {
         console.log("You lose! Scissors beat Paper");
-        computerScore++
+        ++computerScore
+        console.log("user score: " + userScore, "computer score: " + computerScore);
     }
     if (userChoice === 'scissors' && computerChoice === 'paper') {
         console.log("You win! Scissors beat Paper");
-        userScore++
+        ++userScore
+        console.log("user score: " + userScore, "computer score: " + computerScore);
     }
     if (userChoice === 'scissors' && computerChoice === 'rock') {
         console.log("You lose! Rock beats Scissors");
-        computerScore++
+        ++computerScore
+        console.log("user score: " + userScore, "computer score: " + computerScore);
     }
 }
 
-window.addEventListener('DOMContentLoaded', () => {
-    while (userScore < 3 && computerScore < 3) {
-        playRound(getUserChoice(), getComputerChoice())
+/**
+ * Joue 5 rounds
+ */
+function playGame() {
+    for (let index = 0; index < 5; index++) {
+        const userSelection = getUserChoice()
+        const computerSelection = getComputerChoice()
+        playRound(userSelection, computerSelection)
     }
-
-    if (userScore === 3) {
-        console.log("%cYou win!!!", "color:white;background-color:#12A594;padding: 25px 35px");
+    if (userScore > computerScore) {
+        console.log("You win the game!");
     } else {
-        console.log("%cYou lose!!!", "color:white;background-color:#12A594;padding: 25px 35px");
+        console.log("You lose the game!");
     }
-})
+}
+
+playGame()
