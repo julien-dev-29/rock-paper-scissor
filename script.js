@@ -38,35 +38,19 @@ function playRound(userChoice, computerChoice) {
     userChoice = userChoice.toLowerCase()
     computerChoice = computerChoice.toLowerCase()
 
-    if (userChoice === 'rock' && computerChoice === 'scissors') {
-        console.log("You win! Rock beats Scissors");
+    if (userChoice === 'rock' && computerChoice === 'scissors' ||
+        userChoice === 'paper' && computerChoice === 'rock' ||
+        userChoice === 'scissors' && computerChoice === 'paper'
+    ) {
+        console.log(`You win! ${userChoice} beats ${computerChoice}`);
         ++userScore
-        console.log("user score: " + userScore, "computer score: " + computerScore);
     }
-    if (userChoice === 'rock' && computerChoice === 'paper') {
-        console.log("You lose! Paper beats Rock");
+    if (userChoice === 'rock' && computerChoice === 'paper' ||
+        userChoice === 'paper' && computerChoice === 'scissors' ||
+        userChoice === 'scissors' && computerChoice === 'rock'
+    ) {
+        console.log(`You lose! ${computerChoice} beats ${userChoice}`);
         ++computerScore
-        console.log("user score: " + userScore, "computer score: " + computerScore);
-    }
-    if (userChoice === 'paper' && computerChoice === 'rock') {
-        console.log("You win! Paper beats Rock");
-        ++userScore
-        console.log("user score: " + userScore, "computer score: " + computerScore);
-    }
-    if (userChoice === 'paper' && computerChoice === 'scissors') {
-        console.log("You lose! Scissors beat Paper");
-        ++computerScore
-        console.log("user score: " + userScore, "computer score: " + computerScore);
-    }
-    if (userChoice === 'scissors' && computerChoice === 'paper') {
-        console.log("You win! Scissors beat Paper");
-        ++userScore
-        console.log("user score: " + userScore, "computer score: " + computerScore);
-    }
-    if (userChoice === 'scissors' && computerChoice === 'rock') {
-        console.log("You lose! Rock beats Scissors");
-        ++computerScore
-        console.log("user score: " + userScore, "computer score: " + computerScore);
     }
 }
 
